@@ -17,7 +17,14 @@ require File.expand_path(File.join(File.dirname(__FILE__), 'timetrap', 'auto_she
 module Timetrap
   DB_NAME = defined?(TEST_MODE) ? nil : Timetrap::Config['database_file']
   # connect to database.  This will create one if it doesn't exist
-  DB = Sequel.sqlite DB_NAME
+  DB = Sequel.connect(
+    adapter: Timetrap::Config['adapter'].to_sym,
+    user: Timetrap::Config['user'],
+    password: Timetrap::Config['password'],
+    host: Timetrap::Config['host'],
+    port: Timetrap::Config['port'],
+    database: Timetrap::Config['database']
+  )
   CLI.args = Getopt::Declare.new(<<-EOF)
     #{CLI::USAGE}
   EOF

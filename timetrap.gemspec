@@ -27,6 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "json", "~> 2.3"
   spec.add_dependency "sequel", "~> 5.30.0"
   spec.add_dependency "sqlite3", "~> 1.4.2"
+  spec.add_dependency "pg", "~> 0.18.4"
 
   spec.add_dependency "chronic", "~> 0.10.2"
 end
